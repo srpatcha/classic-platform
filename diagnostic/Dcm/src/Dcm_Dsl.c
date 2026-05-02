@@ -965,7 +965,8 @@ void DslMain(void) {
                     /*decrease preempt timeout count*/
                     DECREMENT(runtime->preemptTimeoutCount);
                     /*if processing done is finished,clear the flag*/
-                    if (DcmDslRunTimeData.activeProtocol->DslRunTimeProtocolParameters->externalTxBufferStatus == NOT_IN_USE){
+                    if ((DcmDslRunTimeData.activeProtocol != NULL) &&
+                        (DcmDslRunTimeData.activeProtocol->DslRunTimeProtocolParameters->externalTxBufferStatus == NOT_IN_USE)){
                         /*if processing done is finished,clear the flag*/
                         PreemptionNotProcessingDone = FALSE;
                         /*close the preempted protocol*/
